@@ -65,8 +65,8 @@ ul {
 }
 
 ul li {
-  background: #FF591c;
-  color: #1a1a2e; 
+  background: #1a1a2e;
+  color: orangered; 
   padding: 6px 16px;
   border-radius: 20px;
   font-size: 0.9rem;
