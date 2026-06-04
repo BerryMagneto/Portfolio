@@ -65,8 +65,8 @@ ul {
 }
 
 ul li {
-  background: #1a1a2e;
-  color: white;
+  background: #FF591c;
+  color: #1a1a2e; 
   padding: 6px 16px;
   border-radius: 20px;
   font-size: 0.9rem;
@@ -163,4 +163,11 @@ footer {
     align-self: stretch;
   }
 
+}
+
+#counter {
+    font-size: 0.8rem;
+    color: #999;
+    text-align: right;
+    margin-top: 4px;
 }
