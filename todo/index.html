@@ -110,11 +110,58 @@
       font-size: 0.9rem;
       padding: 24px 0;
     }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .filter-btn {
+      background: none;
+      color: #999;
+      border: 1.5px solid #eee;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .filter-btn:hover {
+      border-color: #1a1a2e;
+      color: #1a1a2e;
+      opacity: 1;
+    }
+
+    .filter-btn.active {
+      background: #1a1a2e;
+      color: white;
+      border-color: #1a1a2e;
+    }
+
+    #task-count {
+      font-size: 0.8rem;
+      color: #999;
+      margin-bottom: 16px;
+    }
+
+    #task-summary {
+      font-size: 0.75rem;
+      color: #bbb;
+      margin-bottom: 12px;
+    }
   </style>
 </head>
 <body>
   <div class="app">
     <h1>My To-Do List</h1>
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="active">Active</button>
+      <button class="filter-btn" data-filter="completed">Completed</button>
+    </div>
+    <p id="task-count"></p>
+    <p id="task-summary"></p>
     <div class="input-row">
       <input type="text" id="todo-input" placeholder="Add a task...">
       <button id="add-btn">Add</button>
