@@ -11,17 +11,25 @@
     </head>
 <link rel="stylesheet" href="style.css">
 <body>
+    
     <header>
     <h1>Darnell Jackson</h1>
-    <p>Up and coming Wev Dev based in Brooklyn</p>
+    <p>Up and coming Web Dev based in Brooklyn</p>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#interests">Interests</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
     </header>
+    
     <main>
-        <section>
+        <section id="about">
             <h2>About me</h2>
             <p>My name is Darnell as you could see and I'm from Brooklyn, NY. I've always been interest in Tech all my life and more specifically now becoming a Web Developer. What I hope to accomplish is to use this site to show off my projects in hope of becoming a Full Stack Developer.</p>
         </section>
 
-        <section>
+        <section id="interests">
             <h2>My Interest</h2>
                 <ul>
                     <li>Pizza</li>
@@ -33,7 +41,43 @@
                 </ul>
             </section>
 
-<section>
+            <section id="projects">
+  <h2>Projects</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <h3>To-Do App</h3>
+      <p>A task manager built with vanilla JavaScript. Features add, complete, delete, filter by status, and localStorage persistence.</p>
+      <div class="project-links">
+        <a href="/Portfolio/todo" target="_blank">Live Site</a>
+        <a href="https://github.com/BerryMagneto/Portfolio/tree/main/todo" target="_blank">GitHub</a>
+      </div>
+      <div class="project-tags">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3>Weather App</h3>
+      <p>Real-time weather search using the Open-Meteo API. Look up current temperature, humidity, wind speed, and conditions for any city.</p>
+      <div class="project-links">
+        <a href="/Portfolio/weather" target="_blank">Live Site</a>
+        <a href="https://github.com/BerryMagneto/Portfolio/tree/main/weather" target="_blank">GitHub</a>
+      </div>
+      <div class="project-tags">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>REST API</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact">
     <h2>Contact Me</h2>
     <form>
     <label for="name">Your name</label>
