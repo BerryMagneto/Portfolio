@@ -2,35 +2,144 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: #f0f0f0;
+  background: #f5f5f5;
+  color: #222;
+}
+
+.navbar {
+  background: #1a1a2e;
+  padding: 16px 32px;
   display: flex;
-  justify-content: center;
-  padding: 48px 16px;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.app {
-  background: white;
-  border-radius: 12px;
-  padding: 32px;
-  width: 100%;
-  max-width: 480px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+.nav-brand {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
 }
 
-h1 {
-  font-size: 1.4rem;
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color .2s;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+.nav-links a.active {
+  color: white;
+  font-weight: 600;
+}
+
+.page {
+  max-width: 720px;
+  margin: 48px auto;
+  padding: 0 24px;
+}
+
+.page h1 {
+  font-size: 2rem;
   color: #1a1a2e;
-  margin-bottom: 20px;
-}
-
-.input-row {
-  display: flex;
-  gap: 8px;
   margin-bottom: 16px;
 }
 
-input[type="text"] {
+.subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 16px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.project-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid #eee;
+}
+
+.project-card h3 {
+  font-size: 1rem;
+  color: #1a1a2e;
+}
+
+.project-card p {
+  font-size: 0.88rem;
+  color: #666;
+  line-height: 1.6;
   flex: 1;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-size: 0.75rem;
+  background: #f0f0f0;
+  color: #555;
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+.project-links {
+  display: flex;
+  gap: 8px;
+}
+
+.project-links a {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  text-decoration: none;
+  border: 1.5px solid #1a1a2e;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: all .2s;
+}
+
+.project-links a:hover {
+  background: #1a1a2e;
+  color: white;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 480px;
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+input, textarea {
   padding: 10px 14px;
   border: 1.5px solid #ddd;
   border-radius: 8px;
@@ -38,7 +147,7 @@ input[type="text"] {
   font-family: inherit;
 }
 
-input[type="text"]:focus {
+input:focus, textarea:focus {
   outline: none;
   border-color: #1a1a2e;
 }
@@ -47,84 +156,18 @@ button {
   background: #1a1a2e;
   color: white;
   border: none;
-  padding: 10px 18px;
+  padding: 12px 24px;
   border-radius: 8px;
   font-size: 1rem;
   font-family: inherit;
   cursor: pointer;
+  align-self: flex-start;
 }
 
 button:hover { opacity: 0.8; }
 
-.filters {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.filter-btn {
-  background: none;
-  color: #999;
-  border: 1.5px solid #eee;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-}
-
-.filter-btn.active {
-  background: #1a1a2e;
-  color: white;
-  border-color: #1a1a2e;
-}
-
-.task-count {
-  font-size: 0.8rem;
-  color: #999;
-  margin-bottom: 16px;
-}
-
-ul { list-style: none; }
-
-li {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 0;
-  border-bottom: 1px solid #f0f0f0;
-  font-size: 0.95rem;
-  color: #333;
-}
-
-li:last-child { border-bottom: none; }
-
-li.done span {
-  text-decoration: line-through;
-  color: #aaa;
-}
-
-li input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-  cursor: pointer;
-  accent-color: #1a1a2e;
-}
-
-.delete {
-  margin-left: auto;
-  background: none;
-  color: #ccc;
-  border: none;
+.success {
+  color: #2ecc71;
   font-size: 1.1rem;
-  cursor: pointer;
-  padding: 0 4px;
-}
-
-.delete:hover { color: #e74c3c; }
-
-.empty {
-  text-align: center;
-  color: #bbb;
-  font-size: 0.9rem;
-  padding: 24px 0;
+  margin-top: 16px;
 }
