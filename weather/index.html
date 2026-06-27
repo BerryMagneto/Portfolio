@@ -12,6 +12,10 @@
     body {
       font-family: 'Inter', sans-serif;
       background: #1a1a2e;
+      background-image: url("../assets/weather.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -150,7 +154,7 @@
   <div class="app">
     <h1>Weather</h1>
     <div class="search-row">
-      <input type="text" id="city-input" placeholder="Enter a city...">
+      <input type="text" id="city-input" placeholder="Enter a city or town...">
       <button id="search-btn">Search</button>
     </div>
     <p class="loading" id="loading">Fetching weather...</p>
