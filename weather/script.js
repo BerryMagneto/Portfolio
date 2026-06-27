@@ -47,6 +47,9 @@ async function getWeather() {
     document.querySelector('#condition').textContent = description
     document.querySelector('#weather-icon').src = getIcon(current.weather_code)
 
+    // Change background based on weather and icon
+    changeBackground(current.weather_code)
+    
     loadingMsg.style.display = 'none'
     weatherCard.style.display = 'block'
 
@@ -78,4 +81,36 @@ function getIcon(code) {
   if (code <= 79) return 'https://openweathermap.org/img/wn/13d@2x.png'
   if (code <= 82) return 'https://openweathermap.org/img/wn/09d@2x.png'
   return 'https://openweathermap.org/img/wn/11d@2x.png'
+}
+
+function changeBackground(code) {
+  const body = document.body;
+
+  if (code === 0) {
+    body.style.backgroundImage = "url('../assets/sunny.jpg')";
+  }
+
+  else if (code <= 3) {
+    body.style.backgroundImage = "url('../assets/cloudy.jpg')";
+  }
+
+  else if (code <= 49) {
+    body.style.backgroundImage = "url('../assets/cloudy.jpg')";
+  }
+
+  else if (code <= 69) {
+    body.style.backgroundImage = "url('../assets/rainy.jpg')";
+  }
+
+  else if (code <= 79) {
+    body.style.backgroundImage = "url('../assets/snowy.jpg')";
+  }
+
+  else if (code <= 99) {
+    body.style.backgroundImage = "url('../assets/storm.jpg')";
+  }
+
+  else {
+    body.style.backgroundImage = "url('../assets/weather.jpg')";
+  }
 }
