@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GameShelf
 
-## Getting Started
+A personal game backlog tracker that I made. You can search for games, add them to your library, and track what you're playing, backlogged, completed, or dropped.
 
-First, run the development server:
+**Live site:** [live link]
+
+## Features
+
+- Email/password authentication with hashed passwords and JWT sessions
+- Full CRUD for a personal game library, scoped per user
+- Live game search via the RAWG Video Games Database API, with cover art
+- Status filtering (All, Backlog / Playing / Completed / Dropped)
+- Protected routes: library data is only ever visible to its owner
+
+## Tech stack
+
+- **Framework:** Next.js 16 (App Router, TypeScript, Turbopack)
+- **Auth:** NextAuth.js (Auth.js v5) with a Credentials provider
+- **Database:** PostgreSQL (Supabase), accessed via Prisma ORM 7 with a driver adapter
+- **Styling:** Used Tailwind CSS
+- **External API:** RAWG Video Games Database
+- **Hosting:** Vercel
+
+## Getting started locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repo-url>
+cd gameshelf
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Create a `.env` file with:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+DATABASE_URL=
+DIRECT_URL=
+AUTH_SECRET=
+RAWG_API_KEY=
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Then:
 
-## Learn More
+```bash
+npx prisma generate
+npx prisma db push
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+## What I learned building this
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project was my first time building real authentication from scratch using hashed passwords, JWT sessions, and server-side route protection. Also, this is my first time working with an external API and a production Postgres database. Along the way I worked through connection pooling vs. direct database connections, Prisma 7s driver adapter architecture, and deploying a Next.js app with a database to Vercel.
