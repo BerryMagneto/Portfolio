@@ -1,3 +1,4 @@
+import RawgAttribution from "@/components/RawgAttribution";
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
@@ -62,6 +63,7 @@ export default async function LibraryPage({
           ))}
         </ul>
       )}
+      <RawgAttribution />
     </div>
   );
 }
