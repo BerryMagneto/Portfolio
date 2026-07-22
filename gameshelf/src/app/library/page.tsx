@@ -33,24 +33,26 @@ export default async function LibraryPage({
   });
 
   return (
-    <div className="max-w-2xl mx-auto mt-20 p-6">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">
-          Welcome, {session.user.name || session.user.email}
-        </h1>
+    <div className="max-w-2xl mx-auto mt-16 p-6">
+      <div className="flex justify-between items-start mb-8">
+        <div>
+          <h1 className="font-display text-3xl font-bold">GameShelf</h1>
+          <p className="text-shelf-muted text-sm mt-1">
+            {session.user.name || session.user.email}
+          </p>
+        </div>
         <LogoutButton />
       </div>
 
       <GameSearch />
-
       <StatusFilter activeFilter={activeFilter} />
 
       {games.length === 0 ? (
-        <div className="text-center mt-10 text-gray-500">
+        <div className="text-center mt-16 text-shelf-muted">
           {activeFilter ? (
             <p>No games with status &quot;{activeFilter}&quot;.</p>
           ) : (
-            <p>Your library is empty. Search above to add your first game.</p>
+            <p>Your shelf is empty. Search above to add your first game.</p>
           )}
         </div>
       ) : (

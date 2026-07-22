@@ -10,15 +10,15 @@ const statuses = [
 
 export default function StatusFilter({ activeFilter }: { activeFilter?: string }) {
   return (
-    <div className="flex gap-2 mt-4 flex-wrap">
+    <div className="flex gap-2 mt-4 flex-wrap font-mono text-xs">
       {statuses.map((s) => (
         <Link
           key={s.label}
           href={s.value ? `/library?status=${s.value}` : "/library"}
-          className={`text-sm px-3 py-1 rounded-full border ${
+          className={`px-3 py-1 rounded-full border transition-colors ${
             activeFilter === s.value
-              ? "bg-black text-white"
-              : "text-gray-600 hover:bg-gray-100"
+              ? "bg-shelf-amber text-shelf-bg border-shelf-amber"
+              : "border-shelf-border text-shelf-muted hover:border-shelf-amber hover:text-shelf-amber"
           }`}
         >
           {s.label}

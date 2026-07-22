@@ -40,17 +40,19 @@ export default function GameSearch() {
         value={query}
         onChange={(e) => handleChange(e.target.value)}
         placeholder="Search for a game..."
-        className="border rounded px-3 py-2 w-full"
+        className="bg-shelf-surface border border-shelf-border rounded-lg px-4 py-2.5 w-full text-shelf-text placeholder:text-shelf-muted focus:outline-none focus:border-shelf-amber"
       />
 
-      {isPending && <p className="text-sm text-gray-400 mt-1">Searching...</p>}
+      {isPending && (
+        <p className="text-sm text-shelf-muted mt-1 font-mono">Searching...</p>
+      )}
 
       {results.length > 0 && (
-        <ul className="border rounded mt-2 divide-y">
+        <ul className="absolute z-10 w-full border border-shelf-border rounded-lg mt-2 divide-y divide-shelf-border bg-shelf-surface shadow-xl">
           {results.map((result) => (
             <li
               key={result.id}
-              className="flex items-center gap-3 p-2 hover:bg-gray-50 cursor-pointer"
+              className="flex items-center gap-3 p-2.5 hover:bg-shelf-bg cursor-pointer transition-colors"
               onClick={() => handleAdd(result)}
             >
               {result.coverUrl && (
@@ -62,7 +64,9 @@ export default function GameSearch() {
               )}
               <span className="text-sm">{result.title}</span>
               {adding === result.id && (
-                <span className="text-xs text-gray-400 ml-auto">Adding...</span>
+                <span className="text-xs text-shelf-muted ml-auto font-mono">
+                  Adding...
+                </span>
               )}
             </li>
           ))}
