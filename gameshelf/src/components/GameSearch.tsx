@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { searchGames } from "@/app/actions/rawg";
+import { searchGames, getGameDetails } from "@/app/actions/rawg";
 import { addGame } from "@/app/actions/games";
 
 type Result = {
@@ -26,7 +26,8 @@ export default function GameSearch() {
 
   async function handleAdd(result: Result) {
     setAdding(result.id);
-    await addGame(result.title, result.coverUrl ?? undefined);
+    const gameDetails = await getGameDetails(result.id);
+    await addGame(result.title, result.coverUrl ?? undefined, gameDetails?.summary, gameDetails?.releaseYear, gameDetails?.developer);
     setResults([]);
     setQuery("");
     setAdding(null);

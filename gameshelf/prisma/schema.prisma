@@ -25,6 +25,9 @@ model GameEntry {
   id        String   @id @default(cuid())
   title     String
   coverUrl  String?
+  summary   String? @db.Text
+  releaseYear Int?
+  developer   String?
   status    Status   @default(BACKLOG)
   rating    Int?
   notes     String?

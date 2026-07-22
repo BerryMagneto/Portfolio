@@ -25,3 +25,19 @@ export async function searchGames(query: string) {
     coverUrl: game.background_image,
   }));
 }
+
+export async function getGameDetails(rawgId: number) {
+  const res = await fetch(
+    `https://api.rawg.io/api/games/${rawgId}?key=${process.env.RAWG_API_KEY}`
+  );
+
+  if (!res.ok) return null;
+
+  const data = await res.json();
+
+  return {
+    summary: data.description_raw as string | null,
+    releaseYear: data.released ? new Date(data.released).getFullYear() : null,
+    developer: data.developers?.[0]?.name ?? null,
+  };
+}

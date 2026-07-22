@@ -4,7 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 import { revalidatePath } from "next/cache";
 
-export async function addGame(title: string, coverUrl?: string) {
+export async function addGame(title: string, coverUrl?: string, summary?: string | null, releaseYear?: number | null, developer?: string | null) {
   const session = await auth();
   if (!session?.user) return { error: "Not authenticated" };
 
@@ -15,6 +15,9 @@ export async function addGame(title: string, coverUrl?: string) {
       title,
       coverUrl: coverUrl || null,
       userId: session.user.id,
+      summary: summary || null,
+      releaseYear: releaseYear || null,
+      developer: developer || null,
     },
   });
 
