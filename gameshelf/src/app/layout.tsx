@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   description: "Track your game backlog — what you're playing, what's next, and what you've beaten.",
 };
 
-export default function RootLayout({code
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
