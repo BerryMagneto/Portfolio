@@ -37,7 +37,7 @@ export default async function LibraryPage({
     <div className="max-w-2xl mx-auto mt-16 p-6">
       <div className="flex justify-between items-start mb-8">
         <div>
-          <h1 className="font-display text-3xl font-bold">GameShelf</h1>
+          <h1 className="font-display text-3xl font-bold">RespawnList</h1>
           <p className="text-shelf-muted text-sm mt-1">
             {session.user.name || session.user.email}
           </p>

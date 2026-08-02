@@ -34,8 +34,8 @@ export default function SignUpPage() {
 
   return (
     <div className="max-w-sm mx-auto mt-24 p-6">
-      <h1 className="font-display text-3xl font-bold mb-1">GameShelf</h1>
-      <p className="text-shelf-muted text-sm mb-8">Create your shelf</p>
+      <h1 className="font-display text-3xl font-bold mb-1">RespawnList</h1>
+      <p className="text-shelf-muted text-sm mb-8">Create your list</p>
 
       <form action={handleSubmit} className="flex flex-col gap-3">
         <input

@@ -1,8 +1,8 @@
-# GameShelf
+# RespawnList
 
 A personal game backlog tracker that I made. You can search for games, add them to your library, and track what you're playing, backlogged, completed, or dropped.
 
-**Live site:** [live link]
+**Live site:** [https://portfolio-dee-jay.vercel.app]
 
 ## Features
 

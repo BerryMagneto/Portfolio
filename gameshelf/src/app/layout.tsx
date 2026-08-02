@@ -20,11 +20,11 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GameShelf",
+  title: "RespawnList",
   description: "Track your game backlog — what you're playing, what's next, and what you've beaten.",
 };
 
-export default function RootLayout({
+export default function RootLayout({code
   children,
 }: Readonly<{
   children: React.ReactNode;
