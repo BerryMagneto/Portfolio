@@ -49,3 +49,20 @@ export async function deleteGame(gameId: string) {
   revalidatePath("/library");
   return { success: true };
 }
+
+export async function updateGameDetails(
+  gameId: string,
+  rating: number | null,
+  notes: string | null
+) {
+  const session = await auth();
+  if (!session?.user) return { error: "Not authenticated" };
+
+  await prisma.gameEntry.updateMany({
+    where: { id: gameId, userId: session.user.id },
+    data: { rating, notes },
+  });
+
+  revalidatePath("/library");
+  return { success: true };
+}

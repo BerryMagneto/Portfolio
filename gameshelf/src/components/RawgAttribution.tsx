@@ -3,12 +3,12 @@ export default function RawgAttribution() {
     <p className="text-xs text-shelf-muted font-mono mt-10 text-center">
       Game data and images provided by{" "}
       <a
-        href="https://rawg.io"
+        href="https://www.igdb.com"
         target="_blank"
         rel="noopener noreferrer"
         className="text-shelf-amber hover:underline"
       >
-        RAWG.io
+        IGDB.com
       </a>
     </p>
   );

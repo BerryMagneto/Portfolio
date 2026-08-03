@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { updateGameStatus, deleteGame } from "@/app/actions/games";
+import { updateGameStatus, deleteGame, updateGameDetails} from "@/app/actions/games";
 
 type Game = {
   id: string;
@@ -11,6 +11,8 @@ type Game = {
   summary?: string | null;
   releaseYear?: number | null;
   developer?: string | null;
+  rating?: number | null;
+  notes?: string | null;
 };
 
 const statusColors: Record<string, string> = {
@@ -25,7 +27,19 @@ export default function GameCard({ game, index = 0 }: { game: Game; index?: numb
   const [deleting, setDeleting] = useState(false);
   const [removed, setRemoved] = useState(false);
   const [expanded, setExpanded] = useState(false);
+  const [rating, setRating] = useState(game.rating ?? 0);
+  const [notes, setNotes] = useState(game.notes ?? "");
+  const [notesOpen, setNotesOpen] = useState(false);
 
+  async function handleRating(value: number) {
+    const newRating = value === rating ? 0 : value;
+    setRating(newRating);
+    await updateGameDetails(game.id, newRating || null, notes || null);
+  }
+
+  async function handleNotesBlur() {
+    await updateGameDetails(game.id, rating || null, notes || null);
+  }
   async function handleStatusChange(newStatus: string) {
     setStatus(newStatus);
     await updateGameStatus(game.id, newStatus);
@@ -83,6 +97,40 @@ export default function GameCard({ game, index = 0 }: { game: Game; index?: numb
           <option value="COMPLETED">Completed</option>
           <option value="DROPPED">Dropped</option>
         </select>
+
+        <div className="flex items-center justify-between mt-2">
+          <div className="flex gap-0.5">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <button
+              key={star}
+              onClick={() => handleRating(star)}
+              className={`text-sm leading-none transition-colors ${
+                star <= rating ? "text-shelf-amber" : "text-shelf-border hover:text-shelf-muted"
+              }`}
+            >
+              ★
+            </button>
+          ))}
+          </div>
+
+          <button
+            onClick={() => setNotesOpen(!notesOpen)}
+            className="text-xs text-shelf-muted hover:text-shelf-amber transition-colors"
+          >
+            {notesOpen ? "Hide" : notes ? "Notes" : "+ Notes"}
+          </button>
+        </div>
+
+        {notesOpen && (
+          <textarea
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+            onBlur={handleNotesBlur}
+            placeholder="Your thoughts..."
+            rows={2}
+            className="w-full mt-1 bg-shelf-bg border border-shelf-border rounded px-2 py-1 text-xs text-shelf-text placeholder:text-shelf-muted focus:outline-none focus:border-shelf-amber resize-none"
+          />
+        )}
 
         {game.summary && (
           <div className="mt-2">
