@@ -42,11 +42,13 @@ export default async function LibraryPage({
   });
 
   return (
-    <div className="max-w-6xl mx-auto mt-16 p-6 page-fade">
-      <div className="flex justify-between items-start mb-2">
+    <div className="max-w-6xl mx-auto mt-16 p-6 page-fade header-glow">
+      <div className="flex justify-between items-end mb-2 pb-4 border-b border-shelf-border">
         <div>
-          <h1 className="font-display text-3xl font-bold">RespawnList</h1>
-          <p className="text-shelf-muted text-sm mt-1">
+          <h1 className="font-display text-4xl font-bold tracking-tight">
+            Respawn<span className="text-shelf-amber">List</span>
+          </h1>
+          <p className="text-shelf-muted text-sm mt-1.5 font-mono">
             {session.user.name || session.user.email}
           </p>
         </div>
