@@ -68,7 +68,9 @@ export default function GameCard({ game, index = 0 }: { game: Game; index?: numb
           <img
             src={game.coverUrl}
             alt={game.title}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+            className="w-full h-full object-cover transition-all duration-300 group-hover:scale-105 opacity-0"
+            onLoad={(e) => e.currentTarget.classList.remove("opacity-0")}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-shelf-muted text-xs font-mono">
@@ -123,12 +125,13 @@ export default function GameCard({ game, index = 0 }: { game: Game; index?: numb
 
         {notesOpen && (
           <textarea
+            autoFocus
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             onBlur={handleNotesBlur}
             placeholder="Your thoughts..."
             rows={2}
-            className="w-full mt-1 bg-shelf-bg border border-shelf-border rounded px-2 py-1 text-xs text-shelf-text placeholder:text-shelf-muted focus:outline-none focus:border-shelf-amber resize-none"
+            className="w-full mt-1 bg-shelf-bg border border-shelf-border rounded px-2 py-1 text-xs text-shelf-text placeholder:text-shelf-muted focus:outline-none focus:border-shelf-amber resize-none transition-colors"
           />
         )}
 

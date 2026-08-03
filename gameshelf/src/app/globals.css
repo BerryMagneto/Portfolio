@@ -15,6 +15,7 @@
   --font-display: var(--font-display);
   --font-body: var(--font-body);
   --font-mono: var(--font-mono);
+  --font-logo: var(--font-logo);
 }
 
 body {
@@ -95,4 +96,28 @@ body {
     radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.025) 1px, transparent 0);
   background-size: auto, auto, auto, 28px 28px;
   background-attachment: fixed;
+}
+
+.text-display-lg {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #14161c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2e3b;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3f4f;
 }

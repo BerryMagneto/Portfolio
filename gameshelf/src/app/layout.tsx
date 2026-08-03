@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, Inter, JetBrains_Mono, Sixtyfour_Convergence } from "next/font/google";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -19,6 +19,11 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "500"],
 });
 
+const sixtyfour = Sixtyfour_Convergence({
+  variable: "--font-logo",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "RespawnList",
   description: "Track your game backlog — what you're playing, what's next, and what you've beaten.",
@@ -32,7 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} ${sixtyfour.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col text-shelf-text font-body app-background">
         {children}

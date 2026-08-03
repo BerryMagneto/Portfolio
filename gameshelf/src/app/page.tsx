@@ -11,7 +11,7 @@ export default async function Home() {
 
       <div className="relative z-20 max-w-4xl mx-auto px-6 pt-28 pb-20">
         <div className="text-center">
-          <h1 className="font-display text-5xl font-bold tracking-tight">
+          <h1 className="text-6xl font-logo">
             Respawn<span className="text-shelf-amber">List</span>
           </h1>
           <p className="text-shelf-muted text-lg mt-4 max-w-md mx-auto">

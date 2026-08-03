@@ -35,13 +35,26 @@ export default function GameSearch() {
 
   return (
     <div className="relative">
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => handleChange(e.target.value)}
-        placeholder="Search for a game..."
-        className="bg-shelf-surface border border-shelf-border rounded-lg px-4 py-2.5 w-full text-shelf-text placeholder:text-shelf-muted focus:outline-none focus:border-shelf-amber"
-      />
+      <div className="relative">
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => handleChange(e.target.value)}
+          placeholder="Search for a game..."
+          className="bg-shelf-surface border border-shelf-border rounded-lg px-4 py-2.5 pr-9 w-full text-shelf-text placeholder:text-shelf-muted focus:outline-none focus:border-shelf-amber"
+        />
+        {query && (
+          <button
+            onClick={() => {
+              setQuery("");
+              setResults([]);
+            }}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-shelf-muted hover:text-shelf-amber text-sm"
+          >
+            ✕
+          </button>
+        )}
+      </div>
 
       {isPending && (
         <ul className="absolute z-10 w-full border border-shelf-border rounded-lg mt-2 bg-shelf-surface shadow-xl divide-y divide-shelf-border">

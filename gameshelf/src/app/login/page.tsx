@@ -29,8 +29,10 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="max-w-sm mx-auto mt-24 p-6">
-      <h1 className="font-display text-3xl font-bold mb-1">RespawnList</h1>
+    <div className="max-w-sm mx-auto mt-24 p-6 header-glow">
+      <h1 className="text-3xl mb-1 font-logo">
+        Respawn<span className="text-shelf-amber">List</span>
+      </h1>
       <p className="text-shelf-muted text-sm mb-8">Log in to your List</p>
 
       <form action={handleSubmit} className="flex flex-col gap-3">

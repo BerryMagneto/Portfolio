@@ -41,11 +41,16 @@ export default async function LibraryPage({
     orderBy: sort && sortMap[sort] ? sortMap[sort] : { createdAt: "desc" },
   });
 
+  const allGames = await prisma.gameEntry.findMany({
+    where: { userId: session.user.id },
+    select: { status: true },
+  });
+
   return (
     <div className="max-w-6xl mx-auto mt-16 p-6 page-fade header-glow">
       <div className="flex justify-between items-end mb-2 pb-4 border-b border-shelf-border">
         <div>
-          <h1 className="font-display text-4xl font-bold tracking-tight">
+          <h1 className="text-4xl font-logo">
             Respawn<span className="text-shelf-amber">List</span>
           </h1>
           <p className="text-shelf-muted text-sm mt-1.5 font-mono">
@@ -62,7 +67,7 @@ export default async function LibraryPage({
       </div>
 
       <div className="flex justify-between items-center mt-4 flex-wrap gap-2">
-        <StatusFilter activeFilter={activeFilter} />
+        <StatusFilter activeFilter={activeFilter} allGames={allGames} />
         <LibrarySortControl />
       </div>
 
