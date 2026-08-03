@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { searchGames, getGameDetails } from "@/app/actions/rawg";
+import { searchGames, getGameDetails } from "@/app/actions/igdb";
 import { addGame } from "@/app/actions/games";
 
 type Result = {

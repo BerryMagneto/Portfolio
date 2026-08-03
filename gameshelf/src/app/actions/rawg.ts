@@ -41,3 +41,17 @@ export async function getGameDetails(rawgId: number) {
     developer: data.developers?.[0]?.name ?? null,
   };
 }
+
+export async function getPopularCovers() {
+  const res = await fetch(
+    `https://api.rawg.io/api/games?key=${process.env.RAWG_API_KEY}&ordering=-added&page_size=24`
+  );
+
+  if (!res.ok) return [];
+
+  const data = await res.json();
+
+  return (data.results as { id: number; background_image: string | null }[])
+    .map((g) => g.background_image)
+    .filter((url): url is string => Boolean(url));
+}
