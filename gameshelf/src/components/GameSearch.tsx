@@ -44,10 +44,17 @@ export default function GameSearch() {
       />
 
       {isPending && (
-        <p className="text-sm text-shelf-muted mt-1 font-mono">Searching...</p>
+        <ul className="absolute z-10 w-full border border-shelf-border rounded-lg mt-2 bg-shelf-surface shadow-xl divide-y divide-shelf-border">
+          {[...Array(3)].map((_, i) => (
+            <li key={i} className="flex items-center gap-3 p-2.5 animate-pulse">
+              <div className="w-10 h-10 rounded bg-shelf-border" />
+              <div className="h-3 w-32 rounded bg-shelf-border" />
+            </li>
+          ))}
+        </ul>
       )}
 
-      {results.length > 0 && (
+      {!isPending && results.length > 0 && (
         <ul className="absolute z-10 w-full border border-shelf-border rounded-lg mt-2 divide-y divide-shelf-border bg-shelf-surface shadow-xl">
           {results.map((result) => (
             <li

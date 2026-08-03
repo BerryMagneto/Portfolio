@@ -20,9 +20,10 @@ const statusColors: Record<string, string> = {
   DROPPED: "bg-shelf-red",
 };
 
-export default function GameCard({ game }: { game: Game }) {
+export default function GameCard({ game, index = 0 }: { game: Game; index?: number }) {
   const [status, setStatus] = useState(game.status);
   const [deleting, setDeleting] = useState(false);
+  const [removed, setRemoved] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
   async function handleStatusChange(newStatus: string) {
@@ -32,13 +33,20 @@ export default function GameCard({ game }: { game: Game }) {
 
   async function handleDelete() {
     setDeleting(true);
+    setRemoved(true);
+    await new Promise((r) => setTimeout(r, 250));
     await deleteGame(game.id);
   }
 
   return (
-    <li className="group relative rounded-lg border border-shelf-border bg-shelf-surface overflow-hidden transition-all hover:border-shelf-amber/50 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/20">
+    <li
+      style={{ animationDelay: `${index * 40}ms` }}
+      className={`card-enter group relative rounded-lg border border-shelf-border bg-shelf-surface overflow-hidden transition-all hover:border-shelf-amber/50 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/20 ${
+        removed ? "opacity-0 scale-95" : "opacity-100 scale-100"
+      } duration-250`}
+    >
       <span
-        className={`absolute top-0 left-0 right-0 h-1.5 z-10 ${statusColors[status] ?? "bg-shelf-slate"}`}
+        className={`absolute top-0 left-0 right-0 h-1.5 z-10 transition-colors duration-300 ${statusColors[status] ?? "bg-shelf-slate"}`}
       />
 
       <div className="aspect-[3/4] w-full overflow-hidden bg-shelf-bg">
@@ -68,7 +76,7 @@ export default function GameCard({ game }: { game: Game }) {
         <select
           value={status}
           onChange={(e) => handleStatusChange(e.target.value)}
-          className="w-full mt-2 bg-shelf-bg border border-shelf-border rounded px-2 py-1 text-xs font-mono text-shelf-text"
+          className="w-full mt-2 bg-shelf-bg border border-shelf-border rounded px-2 py-1 text-xs font-mono text-shelf-text transition-colors focus:border-shelf-amber"
         >
           <option value="BACKLOG">Backlog</option>
           <option value="PLAYING">Playing</option>
@@ -83,7 +91,7 @@ export default function GameCard({ game }: { game: Game }) {
             </p>
             <button
               onClick={() => setExpanded(!expanded)}
-              className="text-xs text-shelf-amber mt-1 hover:underline"
+              className="text-xs text-shelf-amber mt-1 hover:underline active:scale-95 transition-transform"
             >
               {expanded ? "Show less" : "Read more"}
             </button>
@@ -93,7 +101,7 @@ export default function GameCard({ game }: { game: Game }) {
         <button
           onClick={handleDelete}
           disabled={deleting}
-          className="text-xs text-shelf-red mt-2 hover:underline disabled:opacity-50"
+          className="text-xs text-shelf-red mt-2 hover:underline active:scale-95 transition-transform disabled:opacity-50"
         >
           {deleting ? "Removing..." : "Delete"}
         </button>
